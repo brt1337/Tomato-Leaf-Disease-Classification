@@ -4,24 +4,25 @@ import tensorflow as tf
 from tensorflow.keras.backend import clear_session
 from tensorflow.keras.models import load_model
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout,Input
 from tensorflow.keras.preprocessing import image
 from PIL import Image
 import tempfile
 import os
 
 
-tf.config.set_visible_devices([], 'GPU')
+#tf.config.set_visible_devices([], 'GPU')
 
 
-clear_session()
+
 
 #model = tf.keras.models.load_model('models/cnn/rede_neural_convolucional_epochs_100.h5')
 
 
 def build_model():
     model = Sequential()
-    model.add(Conv2D(filters=32, kernel_size=(3, 3), activation='relu', input_shape=[256, 256, 3], name='Camada_Convolucional_1'))
+    model.add(Input(shape=(256, 256, 3)))  # Camada de entrada com a forma desejada
+    model.add(Conv2D(filters=32, kernel_size=(3, 3), activation='relu', name='Camada_Convolucional_1'))
     model.add(MaxPooling2D(pool_size=(2, 2), strides=2, padding='valid', name='Camada_MaxPooling_1'))
     model.add(Conv2D(filters=64, kernel_size=(3, 3), activation='relu', name='Camada_Convolucional_2'))
     model.add(MaxPooling2D(pool_size=(2, 2), strides=2, padding='valid', name='Camada_MaxPooling_2'))
