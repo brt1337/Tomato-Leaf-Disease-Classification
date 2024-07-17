@@ -83,7 +83,7 @@ st.sidebar.title("Doenças Treinadas")
 for disease in disease_names:
     st.sidebar.write(disease.replace('_', ' ').title())
 
-st.title("Classificação de Doenças em Plantas")
+st.title("Classificação de Doenças no cultivo de tomate")
 st.write("Faça upload de uma imagem de uma folha de tomate para verificar se há alguma doença.")
 
 # Upload da imagem
